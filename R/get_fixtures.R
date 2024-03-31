@@ -1,22 +1,32 @@
-#' Get the past or remaining fixtures from a match results dataframe
+#' Get past or remaining league fixtures
+#'
+#' Returns the past or remaining league fixtures for every team in the league,
+#' with each fixture shown twice (once for the home team and once for the away
+#' team), from a match results dataframe created using
+#' `worldfootballR::fb_match_results()` or following the same structure.
 #'
 #' @param matches dataframe containing match results (created using
-#' worldfootballR::fb_match_results() or following the same structure)
-#' @param remaining get remaining fixtures (TRUE) or past fixtures (FALSE)
-#' (default = TRUE)
+#' `worldfootballR::fb_match_results()` or following the same structure)
+#' @param remaining get remaining fixtures (`TRUE`) or past fixtures (`FALSE`)
+#' (default = `TRUE`)
 #'
-#' @keywords fixtures, schedule
+#' @return returns a dataframe with three columns - `team`, `home_or_away`,
+#' `opponent` - with each fixture appearing twice, once for the home team and
+#' once for the away team
+#'
+#' @importFrom rlang .data
 #'
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' results <-
 #'   worldfootballR::fb_match_results(
 #'     country = "ENG", gender = "M", season_end_year = 2024
 #'     )
-#' get_fixtures(results, remaining = TRUE)
 #'
-#' @importFrom rlang .data
+#' get_fixtures(results, remaining = TRUE)
+#' }
 
 get_fixtures <-
   function(matches, remaining = TRUE) {

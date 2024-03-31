@@ -1,14 +1,19 @@
+#' Calculate team ratings
+#'
 #' Calculate team ratings from non-penalty goal difference and non-penalty
-#' expected goal difference
+#' expected goal difference.
 #'
 #' @param team_stats dataframe containing FB Ref standard team stats (created
-#' using worldfootballR::fb_season_team_stats() or following the same structure)
+#' using `worldfootballR::fb_season_team_stats()` or following the same structure)
 #'
-#' @keywords team ratings
+#' @return returns a dataframe with four columns - `team`, `npxgd`, `npgd`, `rating`
+#'
+#' @importFrom rlang .data
 #'
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' team_stats <-
 #'   worldfootballR::fb_season_team_stats(
 #'     country = "ENG", gender = "M", season_end_year = 2024,
@@ -16,8 +21,7 @@
 #'     )
 #'
 #' calculate_team_ratings(team_stats)
-#'
-#' @importFrom rlang .data
+#' }
 
 calculate_team_ratings <-
   function(team_stats) {
