@@ -1,0 +1,18 @@
+Package: fitba
+Title: Functions for carrying out some basic football analytics in R
+Version: 0.0.0.9000
+Authors@R: 
+    person("Paul", "Johnson", , "paul@paulrjohnson.net", role = c("aut", "cre"))
+Description: Functions for carrying out some basic football analytics in R.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+    dplyr,
+    janitor,
+    rlang,
+    stringr,
+    tidyr
+Suggests: 
+    worldfootballR
