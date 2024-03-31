@@ -10,9 +10,9 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/Paulj1989/fitba/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Paulj1989/fitba/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-> Fitba – n. Football; The Beautiful Game
-
 ## Overview
+
+> Fitba – n. Football; The Beautiful Game
 
 fitba (**F**unctions **I**n**T**ended for foot**B**all **A**nalytics) is
 a package for carrying out simple football/soccer/fitba analytics in R.

@@ -20,9 +20,9 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/Paulj1989/fitba/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Paulj1989/fitba/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-> Fitba – n. Football; The Beautiful Game
-
 ## Overview
+
+> Fitba – n. Football; The Beautiful Game
 
 fitba (**F**unctions **I**n**T**ended for foot**B**all **A**nalytics) is a package for carrying out simple football/soccer/fitba analytics in R. Right now it only includes a small handful of functions for tasks like calculating simple team ratings and strength of schedule, but there's plenty of room for growth!
 
