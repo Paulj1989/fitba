@@ -22,11 +22,11 @@ plenty of room for growth!
 
 So far all functions rely on the use of
 [**worldfootballR**](https://jaseziv.github.io/worldfootballR/) for
-getting the [FB Ref](https://fbref.com/) data that is required for each
+getting the [FBref](https://fbref.com/) data that is required for each
 process. The intention isn’t that the package should strictly be an
 extension of **worldfootballR**, but it is an excellent package that
-makes it much easier to extract football data from sites like [FB
-Ref](https://fbref.com/) &
+makes it much easier to extract football data from sites like
+[FBref](https://fbref.com/) &
 [Transfermarkt](https://www.transfermarkt.com/), so it makes sense to
 work with it.
 

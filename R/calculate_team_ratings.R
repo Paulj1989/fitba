@@ -3,7 +3,7 @@
 #' Calculate team ratings from non-penalty goal difference and non-penalty
 #' expected goal difference.
 #'
-#' @param team_stats dataframe containing FB Ref standard team stats (created
+#' @param team_stats dataframe containing FBref standard team stats (created
 #' using `worldfootballR::fb_season_team_stats()` or following the same structure)
 #'
 #' @return returns a dataframe with four columns - `team`, `npxgd`, `npgd`, `rating`
