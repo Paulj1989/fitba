@@ -1,12 +1,13 @@
 #' Calculate team ratings
 #'
-#' Calculate team ratings from non-penalty goal difference and non-penalty
-#' expected goal difference.
+#' Calculate team ratings from non-penalty goal difference per 90 and non-penalty
+#' expected goal difference per 90.
 #'
 #' @param team_stats dataframe containing FBref standard team stats (created
 #' using `worldfootballR::fb_season_team_stats()` or following the same structure)
 #'
-#' @return returns a dataframe with four columns - `team`, `npxgd`, `npgd`, `rating`
+#' @return returns a dataframe with four columns - `team`, `npxgd90`, `npgd90`,
+#' `rating`
 #'
 #' @importFrom rlang .data
 #'
@@ -32,19 +33,20 @@ calculate_team_ratings <-
           "Squad" = "team",
           "_Expected" = "",
           "G_minus_PK" = "npg",
-          "npxG" = "npxg"
+          "npxG" = "npxg",
+          "_Per_Minutes" = "90"
         )
       ) |>
-      dplyr::select(.data$team, .data$team_or_opponent, .data$npxg, .data$npg) |>
+      dplyr::select(.data$team, .data$team_or_opponent, .data$npxg90, .data$npg90) |>
       dplyr::mutate(team = stringr::str_remove(.data$team, "vs ")) |>
       tidyr::pivot_wider(
         names_from = .data$team_or_opponent,
-        values_from = c(.data$npg, .data$npxg),
+        values_from = c(.data$npg90, .data$npxg90),
         names_glue = "{team_or_opponent}_{.value}"
       ) |>
       dplyr::summarise(
-        npxgd = .data$team_npxg - .data$opponent_npxg,
-        npgd = .data$team_npg - .data$opponent_npg,
+        npxgd90 = .data$team_npxg90 - .data$opponent_npxg90,
+        npgd90 = .data$team_npg90 - .data$opponent_npg90,
         rating = (.data$npxgd * 0.7) + (.data$npgd * 0.3),
         .by = .data$team
       )

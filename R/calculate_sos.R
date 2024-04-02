@@ -69,7 +69,7 @@ calculate_sos <-
       dplyr::left_join(opp_opp, by = dplyr::join_by("team")) |>
       dplyr::mutate(
         unstandardized =
-          ((2 * .data$opponent_rating) + .data$opponent_opponent_rating) / 3,
+          (2/3 * .data$opponent_rating) + (1/3 * .data$opponent_opponent_rating),
         sos = as.vector(scale(.data$unstandardized))
       ) |>
       dplyr::select(.data$team, .data$sos)

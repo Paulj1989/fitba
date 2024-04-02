@@ -7,15 +7,16 @@
 calculate_team_ratings(team_stats)
 }
 \arguments{
-\item{team_stats}{dataframe containing FB Ref standard team stats (created
+\item{team_stats}{dataframe containing FBref standard team stats (created
 using \code{worldfootballR::fb_season_team_stats()} or following the same structure)}
 }
 \value{
-returns a dataframe with four columns - \code{team}, \code{npxgd}, \code{npgd}, \code{rating}
+returns a dataframe with four columns - \code{team}, \code{npxgd90}, \code{npgd90},
+\code{rating}
 }
 \description{
-Calculate team ratings from non-penalty goal difference and non-penalty
-expected goal difference.
+Calculate team ratings from non-penalty goal difference per 90 and non-penalty
+expected goal difference per 90.
 }
 \examples{
 \dontrun{
