@@ -36,7 +36,6 @@ You can install the development version of fitba from
 [GitHub](https://github.com/) with:
 
 ``` r
-
 # install.packages("devtools")
 devtools::install_github("Paulj1989/fitba")
 ```
@@ -47,7 +46,6 @@ You can calculate team ratings using the `calculate_team_ratings()`
 function.
 
 ``` r
-
 team_ratings <-
   worldfootballR::fb_season_team_stats(
     country = "ENG", gender = "M", season_end_year = 2024,
@@ -62,19 +60,21 @@ from **worldfootballR**, before using `calculate_sos()` to compute SOS
 values for all teams.
 
 ``` r
-
 remaining_schedule <-
   worldfootballR::fb_match_results(
     country = "ENG", gender = "M", season_end_year = 2024
     ) |>
-  get_fixtures(remaining = TRUE)
+  fitba::get_fixtures(remaining = TRUE)
 
 team_ratings <-
   worldfootballR::fb_season_team_stats(
     country = "ENG", gender = "M", season_end_year = 2024,
     stat_type = "standard", tier = "1st"
     ) |>
-  calculate_team_ratings()
+  fitba::calculate_team_ratings()
 
-calculate_sos(ratings = team_ratings, schedule = remaining_schedule)
+fitba::calculate_sos(
+  ratings = team_ratings,
+  schedule = remaining_schedule
+  )
 ```
