@@ -69,38 +69,39 @@
 </h2>
 <p>You can install the development version of fitba from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Paulj1989/fitba"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using GitHub PAT from the git credential store.</span></span>
-<span><span class="co">#&gt; Downloading GitHub repo Paulj1989/fitba@HEAD</span></span>
-<span><span class="co">#&gt; Warning in untar2(tarfile, files, list, exdir, restore_times): skipping pax</span></span>
-<span><span class="co">#&gt; global extended headers</span></span>
-<span></span>
-<span><span class="co">#&gt; Warning in untar2(tarfile, files, list, exdir, restore_times): skipping pax</span></span>
-<span><span class="co">#&gt; global extended headers</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── R CMD build ─────────────────────────────────────────────────────────────────</span></span>
-<span><span class="co">#&gt;          checking for file 'C:\Users\paul.johnson\AppData\Local\Temp\Rtmpgzqu1M\remotes54c41b3539ab\Paulj1989-fitba-23f153d/DESCRIPTION' ...     checking for file 'C:\Users\paul.johnson\AppData\Local\Temp\Rtmpgzqu1M\remotes54c41b3539ab\Paulj1989-fitba-23f153d/DESCRIPTION' ...   ✔  checking for file 'C:\Users\paul.johnson\AppData\Local\Temp\Rtmpgzqu1M\remotes54c41b3539ab\Paulj1989-fitba-23f153d/DESCRIPTION' (489ms)</span></span>
-<span><span class="co">#&gt;       ─  preparing 'fitba':</span></span>
-<span><span class="co">#&gt;    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   ✔  checking DESCRIPTION meta-information</span></span>
-<span><span class="co">#&gt;       ─  checking for LF line-endings in source and make files and shell scripts</span></span>
-<span><span class="co">#&gt;       ─  checking for empty or unneeded directories</span></span>
-<span><span class="co">#&gt;       ─  building 'fitba_0.0.0.9000.tar.gz'</span></span>
-<span><span class="co">#&gt;      </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Installing package into 'C:/Users/paul.johnson/AppData/Local/Temp/RtmpgpeZyJ/temp_libpath260034a26ded'</span></span>
-<span><span class="co">#&gt; (as 'lib' is unspecified)</span></span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Paulj1989/fitba"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
+<p>You can calculate team ratings using the <code><a href="reference/calculate_team_ratings.html">calculate_team_ratings()</a></code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">team_ratings</span> <span class="op">&lt;-</span></span>
+<code class="sourceCode R"><span></span>
+<span><span class="va">team_ratings</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu">worldfootballR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/worldfootballR/man/fb_season_team_stats.html" class="external-link">fb_season_team_stats</a></span><span class="op">(</span></span>
 <span>    country <span class="op">=</span> <span class="st">"ENG"</span>, gender <span class="op">=</span> <span class="st">"M"</span>, season_end_year <span class="op">=</span> <span class="fl">2024</span>,</span>
 <span>    stat_type <span class="op">=</span> <span class="st">"standard"</span>, tier <span class="op">=</span> <span class="st">"1st"</span></span>
 <span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">fitba</span><span class="fu">::</span><span class="fu"><a href="reference/calculate_team_ratings.html">calculate_team_ratings</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Strength of Schedule (SOS) can be calculated by first bringing together the <code><a href="reference/get_fixtures.html">get_fixtures()</a></code> and <code><a href="reference/calculate_team_ratings.html">calculate_team_ratings()</a></code> functions, with data from <strong>worldfootballR</strong>, before using <code><a href="reference/calculate_sos.html">calculate_sos()</a></code> to compute SOS values for all teams.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">remaining_schedule</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">worldfootballR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/worldfootballR/man/fb_match_results.html" class="external-link">fb_match_results</a></span><span class="op">(</span></span>
+<span>    country <span class="op">=</span> <span class="st">"ENG"</span>, gender <span class="op">=</span> <span class="st">"M"</span>, season_end_year <span class="op">=</span> <span class="fl">2024</span></span>
+<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/get_fixtures.html">get_fixtures</a></span><span class="op">(</span>remaining <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">team_ratings</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">worldfootballR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/worldfootballR/man/fb_season_team_stats.html" class="external-link">fb_season_team_stats</a></span><span class="op">(</span></span>
+<span>    country <span class="op">=</span> <span class="st">"ENG"</span>, gender <span class="op">=</span> <span class="st">"M"</span>, season_end_year <span class="op">=</span> <span class="fl">2024</span>,</span>
+<span>    stat_type <span class="op">=</span> <span class="st">"standard"</span>, tier <span class="op">=</span> <span class="st">"1st"</span></span>
+<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/calculate_team_ratings.html">calculate_team_ratings</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/calculate_sos.html">calculate_sos</a></span><span class="op">(</span>ratings <span class="op">=</span> <span class="va">team_ratings</span>, schedule <span class="op">=</span> <span class="va">remaining_schedule</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
