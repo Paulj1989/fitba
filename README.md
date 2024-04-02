@@ -36,36 +36,45 @@ You can install the development version of fitba from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("Paulj1989/fitba")
-#> Using GitHub PAT from the git credential store.
-#> Downloading GitHub repo Paulj1989/fitba@HEAD
-#> Warning in untar2(tarfile, files, list, exdir, restore_times): skipping pax
-#> global extended headers
-
-#> Warning in untar2(tarfile, files, list, exdir, restore_times): skipping pax
-#> global extended headers
-#> 
-#> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>          checking for file 'C:\Users\paul.johnson\AppData\Local\Temp\Rtmpgzqu1M\remotes54c41b3539ab\Paulj1989-fitba-23f153d/DESCRIPTION' ...     checking for file 'C:\Users\paul.johnson\AppData\Local\Temp\Rtmpgzqu1M\remotes54c41b3539ab\Paulj1989-fitba-23f153d/DESCRIPTION' ...   ✔  checking for file 'C:\Users\paul.johnson\AppData\Local\Temp\Rtmpgzqu1M\remotes54c41b3539ab\Paulj1989-fitba-23f153d/DESCRIPTION' (489ms)
-#>       ─  preparing 'fitba':
-#>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   ✔  checking DESCRIPTION meta-information
-#>       ─  checking for LF line-endings in source and make files and shell scripts
-#>       ─  checking for empty or unneeded directories
-#>       ─  building 'fitba_0.0.0.9000.tar.gz'
-#>      
-#> 
-#> Installing package into 'C:/Users/paul.johnson/AppData/Local/Temp/RtmpgpeZyJ/temp_libpath260034a26ded'
-#> (as 'lib' is unspecified)
 ```
 
 ## Usage
 
+You can calculate team ratings using the `calculate_team_ratings()`
+function.
+
 ``` r
+
 team_ratings <-
   worldfootballR::fb_season_team_stats(
     country = "ENG", gender = "M", season_end_year = 2024,
     stat_type = "standard", tier = "1st"
     ) |>
   fitba::calculate_team_ratings()
+```
+
+Strength of Schedule (SOS) can be calculated by first bringing together
+the `get_fixtures()` and `calculate_team_ratings()` functions, with data
+from **worldfootballR**, before using `calculate_sos()` to compute SOS
+values for all teams.
+
+``` r
+
+remaining_schedule <-
+  worldfootballR::fb_match_results(
+    country = "ENG", gender = "M", season_end_year = 2024
+    ) |>
+  get_fixtures(remaining = TRUE)
+
+team_ratings <-
+  worldfootballR::fb_season_team_stats(
+    country = "ENG", gender = "M", season_end_year = 2024,
+    stat_type = "standard", tier = "1st"
+    ) |>
+  calculate_team_ratings()
+
+calculate_sos(ratings = team_ratings, schedule = remaining_schedule)
 ```
