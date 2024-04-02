@@ -1,6 +1,6 @@
 Package: fitba
 Title: Functions for carrying out some basic football analytics in R
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person("Paul", "Johnson", , "paul@paulrjohnson.net", role = c("aut", "cre"))
 Description: Functions for carrying out some basic football analytics in R.
