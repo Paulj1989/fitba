@@ -32,7 +32,22 @@ So far all functions rely on the use of [**worldfootballR**](https://jaseziv.git
 
 You can install the development version of fitba from [GitHub](https://github.com/) with:
 
-``` r
+```{r}
+#| label: installation
+
 # install.packages("devtools")
 devtools::install_github("Paulj1989/fitba")
+```
+
+## Usage
+
+```{r}
+#| label: team-ratings
+
+team_ratings <-
+  worldfootballR::fb_season_team_stats(
+    country = "ENG", gender = "M", season_end_year = 2024,
+    stat_type = "standard", tier = "1st"
+    ) |>
+  fitba::calculate_team_ratings()
 ```
