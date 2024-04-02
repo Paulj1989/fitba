@@ -47,7 +47,7 @@ calculate_team_ratings <-
       dplyr::summarise(
         npxgd90 = .data$team_npxg90 - .data$opponent_npxg90,
         npgd90 = .data$team_npg90 - .data$opponent_npg90,
-        rating = (.data$npxgd * 0.7) + (.data$npgd * 0.3),
+        rating = (.data$npxgd90 * 0.7) + (.data$npgd90 * 0.3),
         .by = .data$team
       )
   }
